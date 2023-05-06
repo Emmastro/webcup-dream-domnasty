@@ -35,3 +35,8 @@ if "webcup" not in INSTALLED_APPS:
      INSTALLED_APPS += ["webcup"] # for custom data migration
 
 STATIC_ROOT = 'static/'
+
+
+# ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+# SESSION_LOGIN = False
+# USE_JWT = True

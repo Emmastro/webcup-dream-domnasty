@@ -61,11 +61,14 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication','rest_framework.authentication.SessionAuthentication'],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ],
 }
 
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://*']
+#CORS_ALLOWED_ORIGINS = ['http://localhost:5173', 'http://localhost:8000']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -73,7 +76,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 PREPEND_WWW = False
 
-#APPEND_SLASH = False
+# APPEND_SLASH = False
 
 ROOT_URLCONF = 'webcup.urls'
 
@@ -137,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#AUTH_USER_MODEL = "accounts.Client"
+# AUTH_USER_MODEL = "accounts.Client"
 
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'accounts.serializers.CustomTokenSerializer'
