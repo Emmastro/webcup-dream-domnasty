@@ -34,4 +34,4 @@ HOST = env("HOST", default=None)
 if "webcup" not in INSTALLED_APPS:
      INSTALLED_APPS += ["webcup"] # for custom data migration
 
-STATIC_ROOT = '/static'
+STATIC_ROOT = 'static/'
