@@ -61,7 +61,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%m/%d/%Y %I:%M%P",
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication',],
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication','rest_framework.authentication.SessionAuthentication'],
 }
 
 
@@ -137,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "accounts.Client"
+#AUTH_USER_MODEL = "accounts.Client"
 
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'accounts.serializers.CustomTokenSerializer'

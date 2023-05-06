@@ -28,7 +28,7 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'http://*']
 DEBUG = env("DEBUG", default=False)
 
 HOST = env("HOST", default=None)
-
+OPENAI_API_KEY = env("OPENAI_API_KEY", default=None)
 
 
 if "webcup" not in INSTALLED_APPS:

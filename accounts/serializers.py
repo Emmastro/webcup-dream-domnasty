@@ -21,7 +21,7 @@ class ClientSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Client
-        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'date_joined', 'dream')
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'date_joined')
 
 
 class CustomTokenSerializer(serializers.ModelSerializer):
