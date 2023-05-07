@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from main import models, serializers
 from .utils import get_chatgpt_dream_assessment
-# from accounts.models import Client
+from django.contrib.auth.models import User
 
 
 class DreamViewSet(viewsets.ModelViewSet):
@@ -29,19 +29,28 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = models.Post.objects.all()
     serializer_class = serializers.PostSerializer
 
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         # TODO: restrict only admin can create posts
-        if self.request.user.is_staff:
-            serializer.save(author=self.request.user)
-            return Response(serializer.data)
-        else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        # if self.request.user.is_staff:
+        user = User.objects.get(username=self.request.user)
+        serializer.save(author=user)
+        return Response(serializer.data)
+        # else:
+        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-
+    @action(detail=False, methods=['get'])
+    def get_posts(self, request):
+        posts = models.Post.objects.all()
+        print("posts: ", posts)
+        serializer = self.serializer_class(posts, many=True)
+        return Response(serializer.data)
+    
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = models.Contact.objects.all()
     serializer_class = serializers.ContactSerializer
 
-
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = models.Category.objects.all()
+    serializer_class = serializers.CategorySerializer

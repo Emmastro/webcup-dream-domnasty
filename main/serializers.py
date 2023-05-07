@@ -1,6 +1,6 @@
 import logging
 
-from .models import Dream, Post, Contact
+from .models import Category, Dream, Post, Contact
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -28,7 +28,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['owner', 'id', 'title', 'content', 'author']
+        fields = ['owner', 'id', 'title', 'content', 'author', 'category']
 
 
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
@@ -37,3 +37,8 @@ class ContactSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Contact
         fields = ['url', 'owner', 'id', 'name', 'email', 'message']
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'created_at')
