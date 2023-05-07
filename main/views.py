@@ -24,6 +24,14 @@ class DreamViewSet(viewsets.ModelViewSet):
         print("usern id: ", self.request.user)
 
         serializer.save(assessment=assessment, client=self.request.user)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def get_dream_by_id(self, request):
+        id = request.query_params.get('id')
+        dream = models.Dream.objects.filter(id=id)
+        serializer = self.serializer_class(dream, many=True)
+        return Response(serializer.data)
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = models.Post.objects.all()
