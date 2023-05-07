@@ -23,12 +23,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'username', 'posts', 'owner']
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Post
-        fields = ['url', 'owner', 'id', 'title', 'content', 'author']
+        fields = ['owner', 'id', 'title', 'content', 'author']
 
 
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
