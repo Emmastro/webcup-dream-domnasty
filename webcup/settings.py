@@ -34,7 +34,7 @@ OPENAI_API_KEY = env("OPENAI_API_KEY", default=None)
 if "webcup" not in INSTALLED_APPS:
      INSTALLED_APPS += ["webcup"] # for custom data migration
 
-STATIC_ROOT = 'static/'
+STATIC_ROOT = 'assets'
 
 
 # ACCOUNT_CONFIRM_EMAIL_ON_GET = False
