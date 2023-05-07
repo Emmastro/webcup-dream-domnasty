@@ -40,3 +40,7 @@ STATIC_ROOT = 'static/'
 # ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 # SESSION_LOGIN = False
 # USE_JWT = True
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
